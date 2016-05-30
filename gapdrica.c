@@ -1,6 +1,6 @@
-#include <gmp.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <gmp.h>
 #include "boinc_api.h"
 #include "gui_rpc_client.h"
 #include "filesys.h"
