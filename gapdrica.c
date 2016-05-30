@@ -34,15 +34,19 @@ int main (void) {
 		 mpf_sqrt(psq,psq);
      while (1) {
 				 mpz_set(p_ant,p);
-				 mpf_set(p_antsq,psq);
          mpz_nextprime(p, p);
 
-				 mpf_set_z(psq,p);
-				 mpf_sqrt(psq,psq);
 				 mpz_sub(gap,p,p_ant);
-				 mpf_sub(andrica,psq,p_antsq);
-				 //gmp_printf("%Zd %Zd %Zd %.20Ff\n", p_ant, p,gap, andrica);
 				 if(mpz_cmp(gap,comp1)>0){
+					/* Gap is greater than comp 
+					 * doing andrica */
+				  mpf_set_z(p_antsq,p_ant);
+					mpf_sqrt(p_antsq,p_antsq);
+
+				  mpf_set_z(psq,p);
+				 	mpf_sqrt(psq,psq);
+
+				  mpf_sub(andrica,psq,p_antsq);
 				 	gmp_printf("%Zd %Zd %.20Ff\n",p_ant, gap, andrica);
 				 }
 			   //if(mpz_cmp(gap,comp2)==0){
