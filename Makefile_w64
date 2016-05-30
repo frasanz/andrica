@@ -1,0 +1,21 @@
+WARNINGS=-Wall -Wextra
+OPTS=-O4 -static
+EXE=gapdrica_l64
+LIB=-lstdc++ -lgmp
+CXX=x86_64-w64-mingw32-g++
+
+
+##Libraries BOINC
+BOINC_HOME= ${HOME}/boinc/boinc_build/boinc_server_7.1.1_w64
+BOINC      = -lboinc_api -lboinc
+INCLUDES   = -I$(BOINC_HOME)/lib -I$(BOINC_HOME)/api -I/home/fran/boinc/gmp-6.1.0
+LIBRARIES  = -L$(BOINC_HOME)/lib -L$(BOINC_HOME)/api -L/home/fran/boinc/gmp-6.1.0/.libs
+
+
+all: ${EXE}
+
+${EXE} : gapdrica.c
+	${CXX} -o ${EXE} gapdrica.c ${INCLUDES} ${LIBRARIES} ${BOINC} ${LIB} ${OPTS} 
+clean:
+		rm -f *.o
+		rm ${EXE}
